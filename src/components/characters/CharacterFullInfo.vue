@@ -1,7 +1,7 @@
 <template>
-  <div class="character-info">
-    <LoaderSpinner v-if="isLoading" />
-    <div class="character-img" v-else>
+  <LoaderSpinner v-if="isLoading" />
+  <div class="character-info" v-if="!isLoading && character">
+    <div class="character-img">
       <img :src="character.image" :alt="character.name" />
       <div class="rectangle"></div>
     </div>
@@ -9,7 +9,7 @@
     <StatusCharacter :status="character.status" />
     <div>Тип: {{ character.species }}</div>
     <div>Пол: {{ character.gender }}</div>
-    <div>Локация: {{ character.location.name }}</div>
+    <div>Локация: {{ character.location?.name }}</div>
   </div>
 </template>
 
@@ -60,9 +60,9 @@ onMounted(() => {
 .rectangle {
   position: absolute;
   top: 0;
+  right: 0;
   left: 0;
-  width: 100vw;
-  height: 200px;
+  height: 220px;
   background-color: var(--green);
   z-index: -1;
 }

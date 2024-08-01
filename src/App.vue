@@ -21,6 +21,7 @@ body {
 }
 
 .main {
+  padding: 0 20px;
   min-height: calc(100vh - 70px);
 }
 </style>

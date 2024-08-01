@@ -19,9 +19,6 @@ const charactersCount = computed(() => store.state.charactersModule.totalCount)
 </script>
 
 <style scoped>
-.home {
-  padding: 20px;
-}
 .home_about {
   display: flex;
   align-items: center;
