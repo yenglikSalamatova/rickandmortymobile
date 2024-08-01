@@ -1,13 +1,16 @@
 <template>
-  <LoaderSpinner v-if="isLoading" />
   <UpButton />
-  <div class="characters" v-if="characters.length" ref="scrollContainer">
-    <CharacterCard
-      v-for="character in characters"
-      :key="character.id"
-      :character="character"
-    />
-  </div>
+  <InfiniteScroll :fetchData="fetchCharacters">
+    <div class="characters" v-if="characters.length">
+      <CharacterCard
+        v-for="character in characters"
+        :key="character.id"
+        :character="character"
+      />
+    </div>
+  </InfiniteScroll>
+
+  <LoaderSpinner v-if="isLoading" />
   <p v-if="!characters.length">Нет результатов.</p>
 </template>
 
@@ -17,6 +20,7 @@ import { computed } from 'vue'
 import { useStore } from 'vuex'
 import LoaderSpinner from '@/components/common/LoaderSpinner.vue'
 import UpButton from '@/components/common/UpButton.vue'
+import InfiniteScroll from '@/components/common/InfiniteScroll.vue'
 import { onMounted } from 'vue'
 
 const store = useStore()
