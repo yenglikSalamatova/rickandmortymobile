@@ -1,8 +1,10 @@
 <template>
-  <div class="logo">
-    <img src="../../assets/logo.webp" alt="" class="logo-img" />
-    Rick and Morty Web App
-  </div>
+  <router-link to="/"
+    ><div class="logo">
+      <img src="../../assets/logo.webp" alt="" class="logo-img" />
+      Rick and Morty Web App
+    </div>
+  </router-link>
 </template>
 
 <style scoped>

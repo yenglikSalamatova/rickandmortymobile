@@ -1,5 +1,5 @@
 <template>
-  <div class="loader"></div>
+  <div class="loader-wrapper"><div class="loader"></div></div>
 </template>
 
 <script lang="ts">
@@ -9,11 +9,18 @@ export default {
 </script>
 
 <style scoped>
+.loader-wrapper {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .loader {
   width: 20px;
   aspect-ratio: 1;
-  background: #25b09b;
-  box-shadow: 0 0 60px 15px #25b09b;
+  background: var(--green);
+  box-shadow: 0 0 60px 15px var(--green);
   transform: translate(-80px);
   clip-path: inset(0);
   animation: l4-1 0.5s ease-in-out infinite alternate,

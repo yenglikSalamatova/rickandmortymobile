@@ -9,7 +9,7 @@ import HeaderMain from './components/layout/HeaderMain.vue'
 
 <style>
 body {
-  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-family: Fira Sans, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--white-bg);

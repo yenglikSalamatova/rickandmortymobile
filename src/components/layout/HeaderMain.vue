@@ -98,7 +98,7 @@ const handleOpen = () => {
   color: var(--orange);
 }
 
-.router-link-active {
+.link.router-link-active {
   color: var(--green);
 }
 

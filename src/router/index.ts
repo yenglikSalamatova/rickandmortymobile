@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
+
 function lazyLoad (view:string) {
   return () => import(`@/views/${view}.vue`)
 }
@@ -9,6 +10,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/',
     name: 'home',
     component: lazyLoad('HomeView')
+  },
+  {
+    path:"/character/:id",
+    name:'character',
+    component:lazyLoad('CharacterInfo')
   },
   {
     path: '/episodes',
