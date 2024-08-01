@@ -4,44 +4,33 @@
       <img class="card-img" :src="character.image" alt="" />
       <div class="card_info">
         <p class="name">{{ character.name }}</p>
-        <div class="status">
-          <div
-            class="status-color"
-            :style="{ backgroundColor: statusColor }"
-          ></div>
-          {{ character.status }}
-        </div>
-      </div>
-    </div></router-link
-  >
+        <StatusCharacter :status="character.status" />
+      </div></div
+  ></router-link>
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps } from 'vue'
+import { defineProps } from 'vue'
 import { I_Character } from '@/store/charactersModule'
+import StatusCharacter from './StatusCharacter.vue'
 
-const props = defineProps<{
+defineProps<{
   character: I_Character
 }>()
-
-const statusColor = computed(() => {
-  switch (props.character.status) {
-    case 'Alive':
-      return 'green'
-
-    case 'Dead':
-      return 'red'
-    default:
-      return 'gray'
-  }
-})
 </script>
 
 <style scoped>
 .card {
   cursor: pointer;
-  background-color: var(--black);
+  background-color: #121214;
   border-radius: 10px;
+  transition: transform 0.3s ease;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.card:hover {
+  transform: scale(1.05);
 }
 
 .card-img {
@@ -52,28 +41,15 @@ const statusColor = computed(() => {
   border: 3px solid var(--black);
 }
 .card_info {
-  padding: 10px;
-  color: var(--white-bg);
+  padding: 15px;
+  color: var(--white);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .name {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
-}
-
-.status {
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.status-color {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
 }
 </style>

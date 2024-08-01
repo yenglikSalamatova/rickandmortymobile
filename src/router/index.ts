@@ -14,7 +14,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path:"/character/:id",
     name:'character',
-    component:lazyLoad('CharacterInfo')
+    component:lazyLoad('CharacterInfoView')
   },
   {
     path: '/episodes',

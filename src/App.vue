@@ -1,6 +1,10 @@
 <template>
-  <HeaderMain />
-  <router-view />
+  <div class="root">
+    <HeaderMain />
+    <section class="main">
+      <router-view />
+    </section>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -12,7 +16,11 @@ body {
   font-family: Fira Sans, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--white-bg);
-  color: var(--black);
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.main {
+  min-height: calc(100vh - 70px);
 }
 </style>

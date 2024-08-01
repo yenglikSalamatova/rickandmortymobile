@@ -7,7 +7,7 @@
       :character="character"
     />
   </div>
-  <p v-else>Нет результатов.</p>
+  <p v-if="!characters.length">Нет результатов.</p>
 </template>
 
 <script setup lang="ts">
@@ -51,7 +51,31 @@ onUnmounted(() => {
 <style scoped>
 .characters {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 10px;
+}
+
+@media (max-width: 1200px) {
+  .characters {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .characters {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .characters {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 400px) {
+  .characters {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

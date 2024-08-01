@@ -2,7 +2,7 @@
   <router-link to="/"
     ><div class="logo">
       <img src="../../assets/logo.webp" alt="" class="logo-img" />
-      Rick and Morty Web App
+      RickAndMorty
     </div>
   </router-link>
 </template>

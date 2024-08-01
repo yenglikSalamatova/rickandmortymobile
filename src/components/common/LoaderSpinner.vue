@@ -11,7 +11,7 @@ export default {
 <style scoped>
 .loader-wrapper {
   width: 100%;
-  height: 500px;
+  padding: 20px;
   display: flex;
   align-items: center;
   justify-content: center;

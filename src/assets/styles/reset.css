@@ -68,9 +68,9 @@ h6 {
 /* Variables */
 
 :root {
-  --white-bg: #e7e7e7;
+  --white: #fcfcfa;
   --gray: #a8a8a8;
-  --black: #2d2d2d;
+  --black: #040404;
   --green: #05da9c;
   --orange: #e8b10e;
 }
