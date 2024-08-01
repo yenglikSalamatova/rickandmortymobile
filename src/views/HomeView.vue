@@ -10,12 +10,22 @@
 
 <script setup lang="ts">
 import CharactersCards from '@/components/characters/CharactersCards.vue'
+import { onUnmounted } from 'vue'
+import { onMounted } from 'vue'
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 
 const store = useStore()
 
 const charactersCount = computed(() => store.state.charactersModule.totalCount)
+
+onMounted(() => {
+  document.title = 'Главная | Веб приложение Рик и Морти'
+})
+
+onUnmounted(() => {
+  document.title = 'Веб приложение Рик и Морти'
+})
 </script>
 
 <style scoped>

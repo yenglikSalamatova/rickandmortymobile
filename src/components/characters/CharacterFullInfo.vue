@@ -27,6 +27,7 @@ const characterId = route.params.id as string
 
 const fetchCharacter = () => {
   store.dispatch('charactersModule/fetchCharacterById', characterId)
+  document.title = `${character.value.name} | Веб приложение Рик и Морти`
 }
 
 const character = computed(() => store.state.charactersModule.character)

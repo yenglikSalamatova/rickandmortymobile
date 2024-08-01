@@ -1,5 +1,6 @@
 <template>
   <svg
+    v-if="isVisible"
     @click="scrollToTop"
     fill="#000000"
     width="45px"
@@ -28,9 +29,26 @@
 </template>
 
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const isVisible = ref(false)
+
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
+
+const handleScroll = () => {
+  const scrollTop = window.scrollY
+  isVisible.value = scrollTop > 300
+}
+
+onMounted(() => {
+  document.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('scroll', handleScroll)
+})
 </script>
 
 <style setup>

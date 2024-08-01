@@ -9,7 +9,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'home',
-    component: lazyLoad('HomeView')
+    component: lazyLoad('HomeView'),
   },
   {
     path:"/character/:id",
