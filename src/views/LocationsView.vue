@@ -1,7 +1,7 @@
 <template>
   <div class="page-header">
-    <h1 class="h1">Локации</h1>
-    <div class="results-info">{{ totalCount }} результатов</div>
+    <h1 class="h1">{{ $t('locations.title') }}</h1>
+    <div class="results-info">{{ totalCount }} results</div>
   </div>
   <LocationsComponent />
 </template>

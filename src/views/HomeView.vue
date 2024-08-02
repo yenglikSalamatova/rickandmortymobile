@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <div class="home_about">
-      <h1 class="h1">Персонажи</h1>
-      <div class="results-info">{{ charactersCount }} результатов</div>
+      <h1 class="h1">{{ $t('characters.title') }}</h1>
+      <div class="results-info">{{ charactersCount }} results</div>
     </div>
     <CharactersCards />
   </div>
