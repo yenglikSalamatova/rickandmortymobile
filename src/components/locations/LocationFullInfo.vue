@@ -1,14 +1,14 @@
 <template>
   <div>
     <LoaderSpinner v-if="isLoading" />
-    <div class="character-info" v-if="!isLoading && episode">
+    <div class="character-info" v-if="!isLoading && location">
       <div class="rectangle"></div>
-      <div class="name">{{ episode.name }}</div>
-      <div>Дата выхода: {{ episode.air_date }}</div>
-      <div>Эпизод: {{ episode.episode }}</div>
-      <div class="name">Персонажи в эпизоде:</div>
+      <div class="name">{{ location.name }}</div>
+      <div>Тип: {{ location.type }}</div>
+      <div>Измерение: {{ location.dimension }}</div>
+      <div class="name">Персонажи в локации:</div>
       <div class="characters">
-        <div v-for="(character, index) in episode.characters" :key="index">
+        <div v-for="(character, index) in location.residents" :key="index">
           <CharacterCard :character="character" v-if="character.id" />
           <LoaderSpinner v-else />
         </div>
@@ -30,12 +30,12 @@ const route = useRoute()
 const id = route.params.id as string
 
 const fetchData = () => {
-  store.dispatch('episodesModule/fetchEpisode', id)
-  document.title = `${episode.value.name} | Веб приложение Рик и Морти`
+  store.dispatch('locationsModule/fetchLocation', id)
+  document.title = `${location.value.name} | Веб приложение Рик и Морти`
 }
 
-const episode = computed(() => store.state.episodesModule.episode)
-const isLoading = computed(() => store.state.episodesModule.isLoading)
+const location = computed(() => store.state.locationsModule.location)
+const isLoading = computed(() => store.state.locationsModule.isLoading)
 
 onMounted(() => {
   fetchData()
@@ -68,7 +68,7 @@ onMounted(() => {
   right: 0;
   left: 0;
   height: 220px;
-  background-color: var(--pink);
+  background-color: var(--blue);
   z-index: -1;
 }
 

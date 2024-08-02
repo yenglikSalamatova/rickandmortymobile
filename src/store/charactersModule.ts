@@ -3,6 +3,7 @@ import {RootState} from "./index"
 import axios from "axios";
 import { I_Episode } from "./episodesModule";
 
+
 export interface I_Character {
     id:number;
     name:string;
@@ -57,9 +58,9 @@ const mutations = {
         state.character = payload;
     },
     SET_EPISODE(state:I_CharactersModuleState, payload:{index:number, episode:I_Episode}) {
-    console.log("yo")
         state.character.episode.splice(payload.index, 1, payload.episode)
-    }
+    },
+ 
 };
 
 const actions = {

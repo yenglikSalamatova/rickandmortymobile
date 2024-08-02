@@ -30,7 +30,12 @@ const routes: Array<RouteRecordRaw> = [
     path: '/locations',
     name: 'locations',
     component: lazyLoad('LocationsView')
-  }
+  },
+  {
+    path:"/location/:id",
+    name:'location',
+    component:lazyLoad('LocationInfoView')
+  },
 ]
 
 const router = createRouter({
