@@ -1,12 +1,14 @@
 import { Commit, Module } from "vuex";
 import {RootState} from "./index"
 import axios from "axios";
+import { I_Episode } from "./episodesModule";
 
 export interface I_Character {
     id:number;
     name:string;
     status:string;
     image:string;
+    episode: I_Episode[] | string[];
 }
 
 export interface I_CharactersModuleState {
@@ -24,7 +26,8 @@ const state: I_CharactersModuleState = {
         id: 0,
         name:"",
         status:"",
-        image:""
+        image:"",
+        episode:[],
     },
     totalCount: null,
     isLoading:false,
@@ -41,17 +44,21 @@ const mutations = {
         state.totalCount = payload;
     },
 
-    SET_LOADING(state: I_CharactersModuleState, isLoading: boolean) {
-        state.isLoading = isLoading;
+    SET_LOADING(state: I_CharactersModuleState, payload: boolean) {
+        state.isLoading = payload;
     },
-    SET_PAGE(state: I_CharactersModuleState, page: number) {
-        state.currentPage = page;
+    SET_PAGE(state: I_CharactersModuleState, payload: number) {
+        state.currentPage = payload;
     },
-    SET_TOTAL_PAGES(state: I_CharactersModuleState, totalPages: number) {
-        state.totalPages = totalPages;
+    SET_TOTAL_PAGES(state: I_CharactersModuleState, payload: number) {
+        state.totalPages = payload;
     },
     SET_CHARACTER(state: I_CharactersModuleState, payload: I_Character) {
         state.character = payload;
+    },
+    SET_EPISODE(state:I_CharactersModuleState, payload:{index:number, episode:I_Episode}) {
+    console.log("yo")
+        state.character.episode.splice(payload.index, 1, payload.episode)
     }
 };
 
@@ -90,6 +97,16 @@ const actions = {
             if(character) {
                 commit('SET_CHARACTER', character);
             }
+
+            const episodesUrl = character.episode;
+
+            episodesUrl.forEach((url:string, index:number)=>{
+                axios(url).then((result)=>commit('SET_EPISODE', {index, episode:result.data}))
+                .catch(error => {
+                    console.error('Failed to fetch', error);
+                });
+            })
+
         } catch (error) {
             console.error('Failed to fetch character', error);
         }

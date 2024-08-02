@@ -14,17 +14,20 @@ const props = defineProps({
 const scrollContainer = ref<HTMLElement | null>(null)
 
 const handleScroll = () => {
-  const container = scrollContainer.value
-  if (!container) return
+  const { scrollTop, clientHeight, scrollHeight } = document.documentElement
 
-  if (container.getBoundingClientRect().bottom <= window.innerHeight) {
+  if (scrollTop + clientHeight >= scrollHeight - 20) {
     if (props.fetchData) {
+      console.log('fetch scroll')
       props.fetchData()
     }
   }
 }
 
 onMounted(() => {
+  setTimeout(() => {
+    handleScroll()
+  }, 500)
   document.addEventListener('scroll', handleScroll)
 })
 

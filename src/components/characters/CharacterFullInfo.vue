@@ -10,6 +10,16 @@
     <div>Тип: {{ character.species }}</div>
     <div>Пол: {{ character.gender }}</div>
     <div>Локация: {{ character.location?.name }}</div>
+    <div class="name">Эпизоды, где появлялся персонаж:</div>
+    <div class="characters">
+      <div v-for="(episode, index) in character.episode" :key="index">
+        <EpisodeComponent
+          :episode="episode"
+          v-if="typeof episode !== 'string'"
+        />
+        <LoaderSpinner v-else />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -19,6 +29,7 @@ import { useRoute } from 'vue-router'
 import { computed, onMounted } from 'vue'
 import LoaderSpinner from '@/components/common/LoaderSpinner.vue'
 import StatusCharacter from '@/components/characters/StatusCharacter.vue'
+import EpisodeComponent from '@/components/episodes/EpisodeComponent.vue'
 
 const store = useStore()
 const route = useRoute()
@@ -54,7 +65,7 @@ onMounted(() => {
 }
 
 .name {
-  font-size: 25px;
+  font-size: 28px;
   font-weight: 600;
 }
 
@@ -66,5 +77,13 @@ onMounted(() => {
   height: 220px;
   background-color: var(--green);
   z-index: -1;
+}
+
+.characters {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-rows: auto;
+  gap: 10px;
 }
 </style>

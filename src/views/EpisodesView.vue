@@ -1,14 +1,19 @@
 <template>
   <div class="page-header">
     <h1 class="h1">Эпизоды</h1>
-    <div class="results-info">{{ 0 }} результатов</div>
-    <Episodes />
+    <div class="results-info">{{ totalCount }} результатов</div>
   </div>
+  <Episodes />
 </template>
 
 <script setup lang="ts">
 import Episodes from '@/components/episodes/EpisodesComponent.vue'
-import { onMounted, onUnmounted } from 'vue'
+import { onMounted, onUnmounted, computed } from 'vue'
+import { useStore } from 'vuex'
+
+const store = useStore()
+
+const totalCount = computed(() => store.state.episodesModule.totalCount)
 
 onMounted(() => {
   document.title = 'Эпизоды | Веб приложение Рик и Морти'

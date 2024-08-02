@@ -37,32 +37,10 @@ onMounted(() => fetchCharacters())
 
 <style scoped>
 .characters {
+  width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-rows: auto;
   gap: 10px;
-}
-
-@media (max-width: 1200px) {
-  .characters {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
-}
-
-@media (max-width: 900px) {
-  .characters {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
-
-@media (max-width: 600px) {
-  .characters {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 400px) {
-  .characters {
-    grid-template-columns: 1fr;
-  }
 }
 </style>

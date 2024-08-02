@@ -21,21 +21,22 @@ defineProps<{
 
 <style scoped>
 .card {
+  width: 100%;
+  border: 1px solid transparent;
   cursor: pointer;
   background-color: #121214;
   border-radius: 10px;
-  transition: transform 0.3s ease;
-  max-width: 300px;
-  margin: 0 auto;
+  transition: all 0.3s ease;
 }
 
 .card:hover {
-  transform: scale(1.05);
+  border: 1px solid var(--pink);
 }
 
 .card-img {
   width: 100%;
-  height: 200px;
+  height: 250px;
+  margin: 0 auto;
   object-fit: cover;
   border-radius: 10px;
   border: 3px solid var(--black);
@@ -49,6 +50,7 @@ defineProps<{
 }
 
 .name {
+  max-width: 200px;
   font-size: 20px;
   font-weight: 600;
 }

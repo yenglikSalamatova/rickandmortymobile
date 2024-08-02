@@ -95,7 +95,7 @@ const handleOpen = () => {
 }
 
 .link:hover {
-  color: var(--orange);
+  color: var(--pink);
 }
 
 .link.router-link-active {

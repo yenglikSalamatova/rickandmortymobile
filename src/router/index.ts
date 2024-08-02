@@ -22,6 +22,11 @@ const routes: Array<RouteRecordRaw> = [
     component: lazyLoad('EpisodesView')
   },
   {
+    path:"/episode/:id",
+    name:'episode',
+    component:lazyLoad('EpisodeInfoView')
+  },
+  {
     path: '/locations',
     name: 'locations',
     component: lazyLoad('LocationsView')
