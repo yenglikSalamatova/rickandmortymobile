@@ -13,10 +13,7 @@
     <div class="name">Эпизоды, где появлялся персонаж:</div>
     <div class="characters">
       <div v-for="(episode, index) in character.episode" :key="index">
-        <EpisodeComponent
-          :episode="episode"
-          v-if="typeof episode !== 'string'"
-        />
+        <EpisodeComponent :episode="episode" v-if="episode.id" />
         <LoaderSpinner v-else />
       </div>
     </div>
@@ -38,7 +35,6 @@ const characterId = route.params.id as string
 
 const fetchCharacter = () => {
   store.dispatch('charactersModule/fetchCharacterById', characterId)
-  document.title = `${character.value.name} | Веб приложение Рик и Морти`
 }
 
 const character = computed(() => store.state.charactersModule.character)

@@ -31,7 +31,6 @@ const id = route.params.id as string
 
 const fetchData = () => {
   store.dispatch('locationsModule/fetchLocation', id)
-  document.title = `${location.value.name} | Веб приложение Рик и Морти`
 }
 
 const location = computed(() => store.state.locationsModule.location)
@@ -75,7 +74,7 @@ onMounted(() => {
 .characters {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
   grid-template-rows: auto;
   gap: 10px;
 }

@@ -31,7 +31,6 @@ const id = route.params.id as string
 
 const fetchData = () => {
   store.dispatch('episodesModule/fetchEpisode', id)
-  document.title = `${episode.value.name} | Веб приложение Рик и Морти`
 }
 
 const episode = computed(() => store.state.episodesModule.episode)
@@ -75,7 +74,7 @@ onMounted(() => {
 .characters {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
   grid-template-rows: auto;
   gap: 10px;
 }

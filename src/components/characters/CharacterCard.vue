@@ -22,6 +22,7 @@ defineProps<{
 <style scoped>
 .card {
   width: 100%;
+  height: 100%;
   border: 1px solid transparent;
   cursor: pointer;
   background-color: #121214;
