@@ -75,3 +75,23 @@ h6 {
   --pink: #f75c92;
   --blue: #4d4be0;
 }
+
+.btn {
+  cursor: pointer;
+  background-color: var(--pink);
+  border: none;
+  padding: 5px 15px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn:hover {
+  background-color: var(--green);
+}
+
+.icon-img {
+  width: 20px;
+}

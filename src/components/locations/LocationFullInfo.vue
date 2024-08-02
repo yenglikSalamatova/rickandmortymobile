@@ -4,9 +4,9 @@
     <div class="character-info" v-if="!isLoading && location">
       <div class="rectangle"></div>
       <div class="name">{{ location.name }}</div>
-      <div>Тип: {{ location.type }}</div>
-      <div>Измерение: {{ location.dimension }}</div>
-      <div class="name">Персонажи в локации:</div>
+      <div>{{ $t('locations.type') }}: {{ location.type }}</div>
+      <div>{{ $t('locations.dimension') }}: {{ location.dimension }}</div>
+      <div class="name">{{ $t('locations.characters') }}:</div>
       <div class="characters">
         <div v-for="(character, index) in location.residents" :key="index">
           <CharacterCard :character="character" v-if="character.id" />

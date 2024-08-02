@@ -37,20 +37,75 @@
       </div>
       <transition name="fade">
         <nav class="header__nav" v-if="menuOpened">
-          <router-link to="/" class="link">Персонажи</router-link>
-          <router-link to="/episodes" class="link">Эпизоды</router-link>
-          <router-link to="/locations" class="link">Локации</router-link>
+          <router-link to="/" class="link">{{
+            $t('characters.title')
+          }}</router-link>
+          <router-link to="/episodes" class="link">{{
+            $t('episodes.title')
+          }}</router-link>
+          <router-link to="/locations" class="link">{{
+            $t('locations.title')
+          }}</router-link>
+          <a
+            href="https://github.com/yenglikSalamatova"
+            target="_blank"
+            class="link"
+            >{{ $t('myGithub') }}</a
+          >
         </nav>
       </transition>
     </div>
+
+    <nav class="header__nav-desktop">
+      <router-link to="/" class="link">{{
+        $t('characters.title')
+      }}</router-link>
+      <router-link to="/episodes" class="link">{{
+        $t('episodes.title')
+      }}</router-link>
+      <router-link to="/locations" class="link">{{
+        $t('locations.title')
+      }}</router-link>
+      <a
+        href="https://github.com/yenglikSalamatova"
+        target="_blank"
+        class="link"
+        >{{ $t('myGithub') }}</a
+      >
+      <div class="btns">
+        <button class="btn" @click="changeLanguage('ru')">
+          <img
+            class="icon-img"
+            src="https://images.emojiterra.com/twitter/v13.1/512px/1f1f7-1f1fa.png"
+            alt=""
+          />
+          RU
+        </button>
+        <button class="btn" @click="changeLanguage('en')">
+          <img
+            class="icon-img"
+            src="https://images.emojiterra.com/google/noto-emoji/unicode-15.1/color/1024px/1f1ec-1f1e7.png"
+            alt=""
+          />
+          EN
+        </button>
+      </div>
+    </nav>
   </header>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 import Logo from '@/components/common/LogoMain.vue'
+import { useI18n } from 'vue-i18n'
 
 const menuOpened = ref(false)
+
+const { locale } = useI18n()
+
+const changeLanguage = (lang: string) => {
+  locale.value = lang
+}
 
 const handleOpen = () => {
   menuOpened.value = !menuOpened.value
@@ -84,6 +139,16 @@ const handleOpen = () => {
   flex-direction: column;
 }
 
+.header__nav-desktop {
+  display: none;
+  position: static;
+  background-color: var(--black);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
 .link {
   font-size: 22px;
   color: var(--white);
@@ -110,5 +175,45 @@ const handleOpen = () => {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+.btns {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (min-width: 1024px) {
+  .header__menu {
+    display: none;
+  }
+
+  .header__nav {
+    display: none;
+  }
+
+  .header__nav-desktop {
+    display: flex;
+  }
+
+  .link {
+    border-bottom: none;
+    padding: 0;
+    margin-left: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .header__menu {
+    display: block;
+  }
+
+  .header__nav {
+    display: flex;
+  }
+
+  .header__nav-desktop {
+    display: none;
+  }
 }
 </style>

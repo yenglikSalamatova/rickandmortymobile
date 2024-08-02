@@ -7,10 +7,10 @@
     </div>
     <div class="name">{{ character.name }}</div>
     <StatusCharacter :status="character.status" />
-    <div>Тип: {{ character.species }}</div>
-    <div>Пол: {{ character.gender }}</div>
-    <div>Локация: {{ character.location?.name }}</div>
-    <div class="name">Эпизоды, где появлялся персонаж:</div>
+    <div>{{ $t('characters.species') }}: {{ character.species }}</div>
+    <div>{{ $t('characters.gender') }}: {{ character.gender }}</div>
+    <div>{{ $t('characters.location') }}: {{ character.location?.name }}</div>
+    <div class="name">{{ $t('characters.episodes') }}:</div>
     <div class="characters">
       <div v-for="(episode, index) in character.episode" :key="index">
         <EpisodeComponent :episode="episode" v-if="episode.id" />

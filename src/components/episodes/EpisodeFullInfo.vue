@@ -4,9 +4,9 @@
     <div class="character-info" v-if="!isLoading && episode">
       <div class="rectangle"></div>
       <div class="name">{{ episode.name }}</div>
-      <div>Дата выхода: {{ episode.air_date }}</div>
-      <div>Эпизод: {{ episode.episode }}</div>
-      <div class="name">Персонажи в эпизоде:</div>
+      <div>{{ $t('episodes.air_date') }}: {{ episode.air_date }}</div>
+      <div>{{ $t('episodes.episode') }}: {{ episode.episode }}</div>
+      <div class="name">{{ $t('episodes.characters') }}:</div>
       <div class="characters">
         <div v-for="(character, index) in episode.characters" :key="index">
           <CharacterCard :character="character" v-if="character.id" />
