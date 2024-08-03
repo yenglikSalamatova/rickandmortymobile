@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useRouter, onBeforeRouteLeave, onBeforeRouteUpdate } from 'vue-router'
+import { useRouter } from 'vue-router'
 import HeaderMain from './components/layout/HeaderMain.vue'
 import LoadingSpinner from '@/components/common/LoaderSpinner.vue'
 
