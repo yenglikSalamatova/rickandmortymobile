@@ -69,9 +69,7 @@ const mutations = {
 const actions = {
     async fetchEpisodes({ commit }: { commit: Commit }) {
         if (state.isLoading || state.currentPage>state.totalPages) return;
-        if(!state.episodes.length){
             commit('SET_LOADING', true);
-        }
         try {
             const res = await axios.get(`https://rickandmortyapi.com/api/episode/?page=${state.currentPage}`);
             const episodes = res.data.results;

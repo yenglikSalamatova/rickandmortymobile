@@ -18,7 +18,6 @@ const handleScroll = () => {
 
   if (element && element.getBoundingClientRect().bottom <= window.innerHeight) {
     if (props.fetchData) {
-      console.log('fetch scroll')
       props.fetchData()
     }
   }
@@ -29,7 +28,6 @@ onMounted(() => {
   setTimeout(() => {
     handleScroll()
   }, 500)
-
   window.addEventListener('scroll', handleScroll)
 })
 

@@ -69,9 +69,7 @@ const mutations = {
 const actions = {
   async fetchLocations({ commit }: { commit: Commit }) {
     if (state.isLoading || state.currentPage > state.totalPages) return
-    if (!state.locations.length) {
       commit('SET_LOADING', true)
-    }
     try {
       const res = await axios.get(
         `https://rickandmortyapi.com/api/location/?page=${state.currentPage}`

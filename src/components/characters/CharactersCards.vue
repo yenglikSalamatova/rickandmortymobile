@@ -1,6 +1,6 @@
 <template>
   <UpButton />
-  <InfiniteScroll :fetchData="fetchCharacters">
+  <InfiniteScroll :fetchData="fetchCharacters" :isLoading="isLoading">
     <div class="characters" v-if="characters.length">
       <CharacterCard
         v-for="character in characters"

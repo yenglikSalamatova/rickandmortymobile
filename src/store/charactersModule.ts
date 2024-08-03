@@ -67,9 +67,8 @@ const actions = {
     async fetchCharacters({ commit }: { commit: Commit }) {
 
         if (state.isLoading || state.currentPage > state.totalPages ) return;
-        if(!state.characters.length){
-            commit('SET_LOADING', true);
-        }
+        commit('SET_LOADING', true);
+       
         try {
             const res = await axios.get(`https://rickandmortyapi.com/api/character/?page=${state.currentPage}`);
             const characters = res.data.results;
