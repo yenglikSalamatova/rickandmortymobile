@@ -1,5 +1,6 @@
-import { shallowMount } from "@vue/test-utils";
+import { mount } from "@vue/test-utils";
 import InfiniteScroll from "../../src/components/common/InfiniteScroll.vue"
+import { nextTick } from "vue";
 
 
 describe('InfiniteScroll.vue', () => {
@@ -10,27 +11,22 @@ describe('InfiniteScroll.vue', () => {
     })
 
     it('должен вызывать fetchData при скролле вниз', async () => {
-        shallowMount(InfiniteScroll, {
+        const wrapper=mount(InfiniteScroll, {
             props: {
                 fetchData: fetchDataMock
+            },
+            slots: {
+                default: '<div style="height: 2000px;"></div>' 
             }
         });
-        // Начальные значения
-        Object.defineProperty(document.documentElement, 'scrollTop', {
-            writable: true,
-            value: 0
-        });
-        Object.defineProperty(document.documentElement, 'clientHeight', {
-            writable: true,
-            value: 100
-        });
-        Object.defineProperty(document.documentElement, 'scrollHeight', {
-            writable: true,
-            value: 120
-        });
+
+        const scrollContainer = wrapper.find('.infinite-scroll')
+        scrollContainer.element.scrollTop = scrollContainer.element.scrollHeight
+
+        await nextTick()
 
         const scrollEvent = new Event('scroll');
-        document.dispatchEvent(scrollEvent);
+        window.dispatchEvent(scrollEvent);
 
         expect(fetchDataMock).toHaveBeenCalled()
     })
