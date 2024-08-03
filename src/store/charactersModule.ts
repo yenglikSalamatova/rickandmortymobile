@@ -71,7 +71,7 @@ const actions = {
             commit('SET_LOADING', true);
         }
         try {
-            const res = await axios(`https://rickandmortyapi.com/api/character/?page=${state.currentPage}`);
+            const res = await axios.get(`https://rickandmortyapi.com/api/character/?page=${state.currentPage}`);
             const characters = res.data.results;
             const totalCount = res.data.info.count;
             const totalPages = res.data.info.pages;
@@ -92,7 +92,7 @@ const actions = {
     async fetchCharacterById({commit}:{commit:Commit}, id:string) {
         commit("SET_LOADING", true)
         try {
-            const res = await axios(`https://rickandmortyapi.com/api/character/${id}`);
+            const res = await axios.get(`https://rickandmortyapi.com/api/character/${id}`);
             const character = res.data;
 
             if(character) {
@@ -102,7 +102,7 @@ const actions = {
             const episodesUrl = character.episode;
 
             episodesUrl.forEach((url:string, index:number)=>{
-                axios(url).then((result)=>commit('SET_EPISODE', {index, episode:result.data}))
+                axios.get(url).then((result)=>commit('SET_EPISODE', {index, episode:result.data}))
                 .catch(error => {
                     console.error('Failed to fetch', error);
                 });

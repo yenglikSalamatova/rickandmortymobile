@@ -73,7 +73,7 @@ const actions = {
             commit('SET_LOADING', true);
         }
         try {
-            const res = await axios(`https://rickandmortyapi.com/api/episode/?page=${state.currentPage}`);
+            const res = await axios.get(`https://rickandmortyapi.com/api/episode/?page=${state.currentPage}`);
             const episodes = res.data.results;
             const totalCount = res.data.info.count;
             const totalPages = res.data.info.pages;
@@ -94,7 +94,7 @@ const actions = {
     async fetchEpisode({ commit }: { commit: Commit },id:string) {
         commit('SET_LOADING', true);
         try {
-            const episodesRes = await axios(`https://rickandmortyapi.com/api/episode/${id}`);
+            const episodesRes = await axios.get(`https://rickandmortyapi.com/api/episode/${id}`);
 
             if(episodesRes.data) {
                 commit("SET_EPISODE", episodesRes.data);
@@ -103,7 +103,7 @@ const actions = {
            // Load characters
             const characterUrls = episodesRes.data.characters;
             characterUrls.forEach((url: string, index: number) => {
-                axios(url)
+                axios.get(url)
                     .then(characterRes => {
                         if (characterRes.data) {
                             commit("SET_CHARACTER", { index, character: characterRes.data });

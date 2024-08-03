@@ -73,7 +73,7 @@ const actions = {
       commit('SET_LOADING', true)
     }
     try {
-      const res = await axios(
+      const res = await axios.get(
         `https://rickandmortyapi.com/api/location/?page=${state.currentPage}`
       )
       const locations = res.data.results
@@ -96,7 +96,7 @@ const actions = {
   async fetchLocation({ commit }: { commit: Commit }, id: string) {
     commit('SET_LOADING', true)
     try {
-      const locationRes = await axios(
+      const locationRes = await axios.get(
         `https://rickandmortyapi.com/api/location/${id}`
       )
 
@@ -107,7 +107,7 @@ const actions = {
       // Load characters
       const characterUrls = locationRes.data.residents;
       characterUrls.forEach((url: string, index: number) => {
-        axios(url)
+        axios.get(url)
           .then((characterRes) => {
             if (characterRes.data) {
               commit('SET_RESIDENT', { index, character: characterRes.data })
