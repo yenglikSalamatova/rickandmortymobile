@@ -12,6 +12,8 @@ https://sensational-crepe-be43de.netlify.app/
 
 ![RickAndMortyCoolGif](/demogif.gif)
 
+Видео в лучшем качестве: https://www.youtube.com/watch?v=ACSNxrH471Q
+
 ## Технологии
 
 Vue.js, Vuex, Jest, Vue Test Utils, Docker
