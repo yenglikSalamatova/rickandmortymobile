@@ -14,9 +14,9 @@ const props = defineProps({
 const scrollContainer = ref<HTMLElement | null>(null)
 
 const handleScroll = () => {
-  const { scrollTop, clientHeight, scrollHeight } = document.documentElement
+  const element = scrollContainer.value
 
-  if (scrollTop + clientHeight >= scrollHeight - 20) {
+  if (element && element.getBoundingClientRect().bottom <= window.innerHeight) {
     if (props.fetchData) {
       console.log('fetch scroll')
       props.fetchData()
@@ -25,14 +25,16 @@ const handleScroll = () => {
 }
 
 onMounted(() => {
+  // Вызывать скролл, если вдруг все элементы умешаются
   setTimeout(() => {
     handleScroll()
   }, 500)
-  document.addEventListener('scroll', handleScroll)
+
+  window.addEventListener('scroll', handleScroll)
 })
 
 onUnmounted(() => {
-  document.removeEventListener('scroll', handleScroll)
+  window.removeEventListener('scroll', handleScroll)
 })
 </script>
 
