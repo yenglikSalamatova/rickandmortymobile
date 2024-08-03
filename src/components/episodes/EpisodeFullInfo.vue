@@ -72,10 +72,11 @@ onMounted(() => {
 }
 
 .characters {
-  width: 100%;
+  max-width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
   grid-template-rows: auto;
   gap: 10px;
+  justify-self: center;
 }
 </style>

@@ -76,7 +76,7 @@ onMounted(() => {
 }
 
 .characters {
-  width: 100%;
+  max-width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-template-rows: auto;

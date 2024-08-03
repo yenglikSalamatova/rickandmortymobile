@@ -37,7 +37,7 @@ onMounted(() => fetchCharacters())
 
 <style scoped>
 .characters {
-  width: 100%;
+  max-width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-template-rows: auto;
