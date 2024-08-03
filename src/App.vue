@@ -2,8 +2,8 @@
   <div class="root">
     <HeaderMain />
     <section class="main">
-      <router-view />
-      <LoadingSpinner :isLoading="isLoading" />
+      <LoadingSpinner v-if="isLoading" />
+      <router-view v-else />
     </section>
   </div>
 </template>
@@ -17,21 +17,13 @@ import LoadingSpinner from '@/components/common/LoaderSpinner.vue'
 const isLoading = ref(false)
 const router = useRouter()
 
-const startLoading = () => {
-  isLoading.value = true
-}
-
-const stopLoading = () => {
-  isLoading.value = false
-}
-
 router.beforeEach((to, from, next) => {
-  startLoading()
+  isLoading.value = true
   next()
 })
 
 router.afterEach(() => {
-  stopLoading()
+  isLoading.value = false
 })
 </script>
 
