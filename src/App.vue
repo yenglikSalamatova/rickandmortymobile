@@ -3,12 +3,36 @@
     <HeaderMain />
     <section class="main">
       <router-view />
+      <LoadingSpinner :isLoading="isLoading" />
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+import { useRouter, onBeforeRouteLeave, onBeforeRouteUpdate } from 'vue-router'
 import HeaderMain from './components/layout/HeaderMain.vue'
+import LoadingSpinner from '@/components/common/LoaderSpinner.vue'
+
+const isLoading = ref(false)
+const router = useRouter()
+
+const startLoading = () => {
+  isLoading.value = true
+}
+
+const stopLoading = () => {
+  isLoading.value = false
+}
+
+router.beforeEach((to, from, next) => {
+  startLoading()
+  next()
+})
+
+router.afterEach(() => {
+  stopLoading()
+})
 </script>
 
 <style>
