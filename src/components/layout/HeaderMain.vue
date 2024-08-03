@@ -52,6 +52,24 @@
             class="link"
             >{{ $t('myGithub') }}</a
           >
+          <div class="btns link">
+            <button class="btn" @click="changeLanguage('ru')">
+              <img
+                class="icon-img"
+                src="https://images.emojiterra.com/twitter/v13.1/512px/1f1f7-1f1fa.png"
+                alt=""
+              />
+              RU
+            </button>
+            <button class="btn" @click="changeLanguage('en')">
+              <img
+                class="icon-img"
+                src="https://images.emojiterra.com/google/noto-emoji/unicode-15.1/color/1024px/1f1ec-1f1e7.png"
+                alt=""
+              />
+              EN
+            </button>
+          </div>
         </nav>
       </transition>
     </div>
